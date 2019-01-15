@@ -5,10 +5,17 @@ $(document).ready(function(){
         // $.get("http://itunes.apple.com/search?term=" + artist, process);
 
         $.ajax({
-            url: "http://itunes.apple.com/search?term=" + artist,
+            url: "https://itunes.apple.com/search?term=" + artist,
+            type: 'GET',
+            crossDomain: true,
             dataType: 'jsonp',
-            success: process
-        })
+            success: function (result) {
+                process(result);
+            },
+            error: function () {
+                alert('Failed!');
+            }
+        });
     });
 });
 

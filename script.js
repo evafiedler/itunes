@@ -2,7 +2,7 @@ $(document).ready(function(){
     $("#button").click(function(){
         $("#track").empty();
         var artist = $("#artist").val();
-        $.get("https://itunes.apple.com/search?term=" + artist, process);
+        $.get("http://itunes.apple.com/search?term=" + artist, process);
     });
 });
 

@@ -2,12 +2,18 @@ $(document).ready(function(){
     $("#button").click(function(){
         $("#track").empty();
         var artist = $("#artist").val();
-        $.get("http://itunes.apple.com/search?term=" + artist, process);
+        // $.get("http://itunes.apple.com/search?term=" + artist, process);
+
+        $.ajax({
+            url: "http://itunes.apple.com/search?term=" + artist,
+            dataType: 'jsonp',
+            success: process
+        })
     });
 });
 
 function process(data){
-    var myResult = JSON.parse(data);
+    var myResult = data;
     var num = $("#number").val();
     var track = $("#track");
     if(myResult.resultCount === 0){
